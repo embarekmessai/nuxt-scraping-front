@@ -1,5 +1,30 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
+import axios from 'axios';
 
+type Form = {
+    url: string | null
+};
+
+const form = reactive<Form>({
+    url: null,
+});
+
+
+
+
+const submit = async () => {
+    console.log(form.url);
+    
+        await axios.post('http://localhost:5000/api/v1/url', {url: form.url})
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
+    
 </script>
 <template>
     <section class="bg-gray-50 dark:bg-gray-900 mb-14 mt-10 flex items-start rounded">
@@ -8,7 +33,7 @@
             <div class="relative bg-white w-full shadow-md dark:bg-gray-800 rounded-lg">
                 <div class="flex items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                     <div class="w-full">
-                        <form class="flex flex-col sm:flex-row space-x-3 sm:items-center sm:justify-between"
+                        <form @submit.prevent="submit" class="flex flex-col sm:flex-row space-x-3 sm:items-center sm:justify-between"
                             action="#">
                             <label for="simple-search" class="sr-only">Enter l'url</label>
                             <div class="relative sm:w-full">
@@ -20,7 +45,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input type="text" id="inputUrl" name="inputUrl"
+                                <input type="text" id="inputUrl" v-model="form.url"
                                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Enter l'url: https//..." required />
                             </div>

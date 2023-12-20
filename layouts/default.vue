@@ -2,8 +2,10 @@
 
 </script>
 <template>
-    <body class="bg-gray-50 m-0 p-0">
-        <NavBar/>
-        <slot />
-    </body>
+    <div class="bg-gray-50 m-0 p-0">
+        <NavBar />
+        <main class="bg-gray-50 m-0 p-0">
+            <slot />
+        </main>
+    </div>
 </template>
