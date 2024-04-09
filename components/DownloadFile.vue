@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <section class="flex flex-col items-center pb-10">
+    <section class="flex flex-col items-center pb-10 hidden">
         <div class="w-full max-w-sm bg-white border pt-5 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center pb-10">
                 <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://icon-library.com/images/image-file-icon/image-file-icon-3.jpg" alt="Bonnie image"/>
